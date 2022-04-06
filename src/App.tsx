@@ -1,65 +1,100 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./App.css";
-function App() {
-  const [name, setName] = useState("");
-  const [location, setLocation] = useState("");
-  const [available, setAvailable] = useState(false);
+import "./App.scss";
 
-  const [bikeList, setBikeList] = useState<any[]>([]);
+function App() {
+  const [longitude, setLongitude] = useState("");
+  const [latitude, setLatitude] = useState("");
+
+  const [coordsList, setCoordsList] = useState<any[]>([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/").then((response) => {
-      setBikeList(response.data);
+    axios.get("https://safe-atoll-31592.herokuapp.com/").then((response) => {
+      setCoordsList(response.data);
       console.log(response.data);
     });
   }, []);
 
-  const addBike = () => {
+  const addCoords = () => {
     axios
-      .post("http://localhost:5000/create", {
-        name: name,
-        location: location,
+      .post("https://safe-atoll-31592.herokuapp.com/create", {
+        longitude: longitude,
+        latitude: latitude,
       })
       .then((response) => {
-        setBikeList(response.data);
+        setCoordsList(response.data);
         console.log(response.data);
       });
   };
 
-  const deleteBike = (id: any) => {
-    axios.delete(`http://localhost:5000/delete/${id}`).then((response) => {
-      setBikeList(
-        bikeList.filter((val) => {
-          return val.id !== id;
-        })
-      );
-    });
+  const deleteCoords = (id: any) => {
+    axios
+      .delete(`https://safe-atoll-31592.herokuapp.com/delete/${id}`)
+      .then((response) => {
+        setCoordsList(
+          coordsList.filter((val) => {
+            return val.id !== id;
+          })
+        );
+      });
   };
 
   return (
     <div className="App">
-      <input
-        type="text"
-        placeholder="name"
-        onChange={(e) => setName(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="description"
-        onChange={(e) => setLocation(e.target.value)}
-      />
-      <button onClick={addBike}>ADD</button>
-      {bikeList.map((val, key) => {
-        return (
-          <div className="bike">
-            <h3>{val.name}</h3>
-            <h3>{val.location}</h3>
-            <h3>{val.available}</h3>
-            <button onClick={() => deleteBike(val.id)}> DELETE </button>
-          </div>
-        );
-      })}
+      <div className="text">
+        <div className="welcome">
+          <h1>Welcome to the Safe Atoll</h1>
+          <h3>Making garbage collecting an easy job !</h3>
+        </div>
+        <div className="image"></div>
+      </div>
+      <div className="form">
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Latitude"
+            onChange={(e) => setLatitude(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Longitude"
+            onChange={(e) => setLongitude(e.target.value)}
+          />
+        </div>
+        <button className="learn-more" onClick={addCoords}>ADD COORDS</button>
+      </div>
+      <div className="coords-list">
+        {coordsList.map((val, key) => {
+          return (
+            <div className="coords">
+              <h3>{val.longitude}</h3>
+              <h3>{val.latitude}</h3>
+              <button className="learn-more" onClick={() => deleteCoords(val.id)}> COLLECTED </button>
+              <button
+              className="learn-more2"
+                onClick={() => {
+                  let map: google.maps.Map;
+                  map = new google.maps.Map(
+                    document.getElementById("map") as HTMLElement,
+                    {
+                      center: { lat: val.latitude, lng: val.longitude },
+                      zoom: 20,
+                    }
+                  );
+                  let marker = new google.maps.Marker({
+                    position: { lat: val.latitude, lng: val.longitude },
+                    map: map,
+                  });
+                }}
+              >
+                VIEW POINT
+              </button>
+            </div>
+          );
+        })}
+      </div>
+
+      <div id="map" />
     </div>
   );
 }
