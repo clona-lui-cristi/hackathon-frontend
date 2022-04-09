@@ -43,8 +43,11 @@ function App() {
     <div className="App">
       <div className="text">
         <div className="welcome">
-          <h1>Welcome to the Safe Atoll</h1>
+          <h1>
+            Welcome to <span className="blue">City Racoon</span>
+          </h1>
           <h3>Making garbage collecting an easy job !</h3>
+          <img src={require("./logo.png")} alt="logo" />
         </div>
         <div className="image"></div>
       </div>
@@ -117,7 +120,10 @@ function App() {
           <div className="vision">
             <h3>Vision Statement</h3>
             <p>
-            We want as many cities and villages as possible to recycle properly with our help, but also to see a <span className="black">modern Romania</span> in this field.            </p>
+              We want as many cities and villages as possible to recycle
+              properly with our help, but also to see a{" "}
+              <span className="black">modern Romania</span> in this field.{" "}
+            </p>
           </div>
         </div>
         <div className="lower-text">
@@ -140,7 +146,11 @@ function App() {
               <div className="hs">
                 <h3>Brief Team History</h3>
                 <p>
-                At the moment we don't have experience since we are at the beginning but we continue <span className="black">to write history with each passing day making us better.</span>
+                  At the moment we don't have experience since we are at the
+                  beginning but we continue{" "}
+                  <span className="black">
+                    to write history with each passing day making us better.
+                  </span>
                 </p>
               </div>
             </div>

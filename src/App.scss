@@ -52,6 +52,14 @@ $red-shadow: #f9c4d2;
     h3 {
       padding-top: 1rem;
     }
+    .blue {
+      color: $green-border;
+      text-transform: uppercase;
+    }
+    img{
+      margin: 2rem;
+      height: 200px;
+    }
   }
   .image {
     height: 90vh;
