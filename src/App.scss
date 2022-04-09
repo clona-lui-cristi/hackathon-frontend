@@ -315,12 +315,18 @@ $red-shadow: #f9c4d2;
       padding: 1.5rem;
       background-color: #F5C26B;
       width: 90%;
+      .black {
+        color: black;
+      }
     }
     .vision {
       width: auto;
       margin: 1rem;
       padding: 1.5rem;
       background-color: #00BDA5;
+      .black {
+        color: black;
+      }
     }
   }
   .lower-text{
@@ -401,13 +407,16 @@ $red-shadow: #f9c4d2;
         justify-content: center;
         align-items: center;
         margin: 1rem;
-        padding: 1.2rem;
         background-color: #FF7A59;
+        .black {
+          color: black;
+        }
         #hourglass{
           height: 200px;
           width: 250px;
-          padding: 1rem;
-          background-image: url("../public/images/hourglass.png");
+          padding: 2rem;
+          margin: 1rem;
+          background-image: url("../public/images/favicon.png");
           background-repeat: no-repeat;
           background-size: cover;
           background-position: center;

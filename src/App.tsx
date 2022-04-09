@@ -105,18 +105,19 @@ function App() {
       <div id="map" />
 
       <div className="about">
-        <h1>About our company</h1>
+        <h1>About our team</h1>
         <div className="upper-text">
           <div className="mission">
             <h3>Mission Statement</h3>
-            <p>We came in help for the people who need garbage collection.</p>
+            <p>
+              Our principal objective is to solve a big contemporary problem and
+              that is <span className="black">proper recycling of waste.</span>
+            </p>
           </div>
           <div className="vision">
             <h3>Vision Statement</h3>
             <p>
-              Right here, we talk about the future. The things that inspire us
-              to go forward .
-            </p>
+            We want as many cities and villages as possible to recycle properly with our help, but also to see a <span className="black">modern Romania</span> in this field.            </p>
           </div>
         </div>
         <div className="lower-text">
@@ -128,17 +129,19 @@ function App() {
             <div className="values">
               <h3>Core Values</h3>
               <div className="fk">
-              <div id="thumbsup"></div>
-              <div id="trophy"></div>
-              <div id="goal"></div>
-              <div id="sun"></div>
+                <div id="thumbsup"></div>
+                <div id="trophy"></div>
+                <div id="goal"></div>
+                <div id="sun"></div>
               </div>
             </div>
             <div className="history">
               <div id="hourglass"></div>
               <div className="hs">
-                <h3>Brief Company History</h3>
-                <p>Our company history doesn't go way back but we have some experience in this kind of things.</p>
+                <h3>Brief Team History</h3>
+                <p>
+                At the moment we don't have experience since we are at the beginning but we continue <span className="black">to write history with each passing day making us better.</span>
+                </p>
               </div>
             </div>
           </div>
