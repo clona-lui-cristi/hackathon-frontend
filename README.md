@@ -1,3 +1,3 @@
-# Website made for ROTSA - HACKATHON
+# Cityracoon.tk
 
 ## Enjoy.
